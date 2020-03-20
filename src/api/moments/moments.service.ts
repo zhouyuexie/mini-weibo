@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import db from '../../db/db';
+import db from '../../../db/db';
 
 @Injectable()
 export class MomentsService {

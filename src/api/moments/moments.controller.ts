@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common';
 import { MomentsService } from './moments.service';
 import { Moments2NumberPipe } from './pipe/moments.pipe';
-import { UserRoles } from '../auth/Role';
+import { UserRoles } from '../../auth/Role';
 
 @Controller('moments')
 export class MomentsController {

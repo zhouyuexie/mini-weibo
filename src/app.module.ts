@@ -1,5 +1,5 @@
 import { MiddlewareConsumer, Module } from '@nestjs/common';
-import { MomentsModule } from './moments/moments.module';
+import { MomentsModule } from './api/moments/moments.module';
 import { APP_GUARD } from '@nestjs/core';
 import { AuthGuard } from './guard/auth.guard';
 import { NestModule } from '@nestjs/common/interfaces/modules/nest-module.interface';
