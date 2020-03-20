@@ -1,7 +1,6 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import * as jwt from 'jsonwebtoken';
 import { UserService } from '../user.service';
-import db from '../../../../db/user.db';
 import { AuthConfig } from '../../../../config/auth.config';
 import { Role } from '../../../auth/Role';
 import { BadRequestException } from '@nestjs/common';
@@ -21,22 +20,37 @@ describe('UserService', () => {
     const username = 'username';
     const password = 'password';
 
-    const { id, token } = service.register(username, password);
+    const { token } = service.register(username, password);
 
-    const user = db.find(user => user.id === id);
     const userIfno = jwt.verify(token, AuthConfig.secret);
     expect(token).toBeDefined();
     expect(userIfno).toMatchObject({
       username,
       roles: [Role.USER],
-      id,
     });
-    expect(user.id).toEqual(id);
   });
 
   it('should throw bad request when username is existed', () => {
     expect(() => {
       service.register('test', 'password');
     }).toThrowError(new BadRequestException('username is existed'));
+  });
+
+  it('should throw bad request when username is not exist', () => {
+    expect(() => {
+      service.login('not find', 'password');
+    }).toThrowError(new BadRequestException('username incorrect'));
+  });
+
+  it('should throw bad request when password is incorrect', () => {
+    expect(() => {
+      service.login('test', 'incorrect');
+    }).toThrowError(new BadRequestException('password incorrect'));
+  });
+
+  it('should login success', () => {
+    const { token } = service.login('test', 'encode password');
+
+    expect(token).toBeDefined();
   });
 });

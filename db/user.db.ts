@@ -2,6 +2,6 @@ export default [
   {
     username: 'test',
     password: 'encode password',
-    id: 'id1'
-  }
-]
+    id: 'id1',
+  },
+];

@@ -20,8 +20,21 @@ export class UserService {
 
     return {
       token: this.generateJWT(username, newUser.id),
-      id: newUser.id,
     };
+  }
+
+  public login(username: string, password: string) {
+    const user = db.find(user => user.username === username);
+    if (!user) {
+      throw new BadRequestException('username incorrect');
+    }
+    if (user.password !== password) {
+      throw new BadRequestException('password incorrect');
+    }
+
+    return {
+      token: this.generateJWT(username, user.id),
+    }
   }
 
   protected generateJWT(username, id) {
