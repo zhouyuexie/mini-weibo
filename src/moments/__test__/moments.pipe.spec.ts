@@ -17,4 +17,12 @@ describe('MomentsPipe', () => {
       moments2NumberPipe.transform('string');
     }).toThrowError(new BadRequestException('Validation failed'));
   });
+
+  it('should return original value when invoke nothing', () => {
+    const moments2NumberPipe = new Moments2NumberPipe();
+
+    const value = moments2NumberPipe.transform();
+
+    expect(value).toBeUndefined();
+  });
 });
