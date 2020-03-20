@@ -1,4 +1,4 @@
-{
+export default {
 	"home_timeline": [
 		{
 			"created_at": "Fri Jan 03 11:00:04 +0800 2020",

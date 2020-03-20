@@ -1,4 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import db from '../../db/db';
 
 @Injectable()
-export class MomentsService {}
+export class MomentsService {
+  public getList(page = 1, size = 10) {
+    const start = (page - 1) * size;
+    const end = start + size;
+    return db.home_timeline.slice(start, end);
+  }
+}
