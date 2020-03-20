@@ -3,8 +3,8 @@ import { Request } from 'express';
 
 export interface IUserInfo {
   roles: Role[];
-  userName: string;
-  userId: string;
+  username: string;
+  id: string;
 }
 
 export interface IRequest extends Request {
