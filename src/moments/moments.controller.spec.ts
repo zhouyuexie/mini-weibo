@@ -23,4 +23,20 @@ describe('Moments Controller', () => {
 
     expect(list).toBeDefined();
   });
+
+  it('should get detail success', () => {
+    const id = 4456602943754718;
+
+    const detail = controller.getDetail(id);
+
+    expect(detail).toBeDefined();
+  });
+
+  it('should get detail failed', () => {
+    const id = 0;
+
+    expect(() => {
+      controller.getDetail(id);
+    }).toThrow();
+  });
 });

@@ -8,4 +8,8 @@ export class MomentsService {
     const end = start + size;
     return db.home_timeline.slice(start, end);
   }
+
+  public getDetail(id: number) {
+    return db.home_timeline.find((moment) => moment.id == id);
+  }
 }

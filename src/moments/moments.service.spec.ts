@@ -27,4 +27,20 @@ describe('MomentsService', () => {
 
     expect(list).toHaveLength(1);
   });
+
+  it('should get detail success', () => {
+    const id = 4456602943754718;
+
+    const detail = service.getDetail(id);
+
+    expect(detail).toBeDefined();
+  });
+
+  it("should can't get detail", () => {
+    const id = 0;
+
+    const detail = service.getDetail(id);
+
+    expect(detail).toBeUndefined();
+  });
 });
