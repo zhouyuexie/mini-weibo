@@ -10,6 +10,6 @@ export class MomentsService {
   }
 
   public getDetail(id: number) {
-    return db.home_timeline.find((moment) => moment.id == id);
+    return db.home_timeline.find((moment) => moment.id === id);
   }
 }
